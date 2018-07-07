@@ -155,6 +155,10 @@ public class ProfileActivity extends AppCompatActivity {
             else
                 spouseField.setText("N/A");
             mProgressDialog.dismiss();
+
+            if(favourite.equals("true"))
+                fab.setColorFilter(Color.BLACK);
+
         }
 
         else {
@@ -291,9 +295,11 @@ public class ProfileActivity extends AppCompatActivity {
                 String[] whereClause = {name};
 
                 if(favourite.equals("true")){
+                    fab.setColorFilter(Color.WHITE);
                     favourite = "false";
                 }
-                else favourite = "true";
+                else {favourite = "true";
+                    fab.setColorFilter(Color.BLACK);}
 
                 ContentValues values = new ContentValues();
                 values.put(ProfileContract.ProfileEntry.FAVOURITE,favourite);
